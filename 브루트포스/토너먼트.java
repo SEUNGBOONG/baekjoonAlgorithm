@@ -19,7 +19,6 @@ public class 토너먼트 {
             count++;
         }
         System.out.println(count);
-
     }
 
 
