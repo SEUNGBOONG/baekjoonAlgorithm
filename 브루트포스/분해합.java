@@ -3,30 +3,34 @@ package 브루트포스;
 import java.util.Scanner;
 
 public class 분해합 {
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int number = scanner.nextInt();
-        System.out.println(new 분해합().solution(number));
+        scanner.close();
+
+        분해합 a = new 분해합();
+        int result = a.result(number);
+        System.out.println(result);
     }
 
-    public int solution(int number) {
-        for (int i = 1; i < number; i++) { // 1부터 number - 1까지 검사
+    public int result(int number) {
+        for (int i = 1; i < number; i++) { // 1부터 number-1까지 검사
             int sum = i;
             int temp = i;
 
-            // 각 자릿수 더하기
+            // 각 자릿수 합을 계산
             while (temp > 0) {
-                sum += temp % 10; // 마지막 자릿수 더하기
-                temp /= 10;       // 마지막 자릿수 제거
+                sum += temp % 10; // 마지막 자리 더하기
+                temp /= 10; // 한 자리 줄이기
             }
 
-            // 분해합이 주어진 숫자와 같은 경우
+            // 자릿수 합과 원래 숫자가 같은 경우
             if (sum == number) {
-                return i;
+                return i; // 생성자 반환
             }
         }
 
-        // 생성자가 없는 경우
-        return 0;
+        return 0; // 생성자가 없는 경우 0 반환
     }
 }
