@@ -33,7 +33,7 @@ public class 끝말잇기 {
 
     public static void main(String[] args) {
         끝말잇기 wc = new 끝말잇기();
-        String[] words = {"apple", "everyone", "element", "truck", "kite"};
+        String[] words = {"apple", "dveryone", "element", "truck", "kite"};
         System.out.println(wc.solution(5, words)); // "Yes"
     }
 }
