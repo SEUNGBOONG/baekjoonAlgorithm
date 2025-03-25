@@ -1,4 +1,4 @@
-package 이진탐색;
+package 그리디;
 
 public class 수찾기 {
 }

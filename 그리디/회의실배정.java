@@ -1,4 +1,4 @@
-package 이진탐색;
+package 그리디;
 
 import java.util.*;
 
@@ -21,6 +21,7 @@ public class 회의실배정 {
         });
         int endTime = meeting[0][1];
         result++;
+
         for (int i =1; i<count;i++){
             if(meeting[i][0]>=endTime){
                 endTime=meeting[i][1];
