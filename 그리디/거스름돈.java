@@ -1,26 +1,27 @@
 package 그리디;
 
-import java.util.Arrays;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class 거스름돈 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
-        int count = 0;
-        while(true){
-            if(N%5 == 0){
-                count += N/5;
-                System.out.println(count);
-                break;
-            }else{
-                N -= 2;
-                count++;
-            }
-            if(N < 0){
-                System.out.println(-1);
-                break;
-            }
-        }
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+       int cost = Integer.parseInt(br.readLine());
+
+       int[] coin = {500,100,50,10,5,1};
+       cost= 1000-cost;
+
+       int num=0;
+       for (int i =0; i<6; i++){
+           if (cost/coin[i] >0){
+               num+=cost/coin[i];
+               cost=cost%coin[i];
+           }
+       }
+        System.out.println(num);
+
     }
+
 }
