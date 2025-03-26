@@ -20,7 +20,7 @@ public class 거스름돈 {
                cost=cost%coin[i];
            }
        }
-        System.out.println(num);
+        System.out.println();
 
     }
 
