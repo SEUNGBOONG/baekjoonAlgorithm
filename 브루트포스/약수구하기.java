@@ -21,14 +21,16 @@ public class 약수구하기 {
                 queue.add(i);
             }
         }
-        int count = 0;
+        int count = 1;
         while (!queue.isEmpty()) {
-            if (queue.peek() != num2) {
-                queue.poll();
-                count++;
+            if(queue.contains(num2)){
+                if (queue.peek() != num2) {
+                    queue.poll();
+                    count++;
+                }
             }
-            if (!queue.contains(num2)){
-                count =0;
+            else{
+                count=0;
             }
             queue.poll();
         }
