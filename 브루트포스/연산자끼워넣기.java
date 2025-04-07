@@ -6,25 +6,61 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class 연산자끼워넣기 {
+    public static int N;
+    public static int[] number;
+    public static int[] operator = new int[4];
+    public static int MAX = Integer.MIN_VALUE;    // 최댓값
+    public static int MIN = Integer.MAX_VALUE;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(br.readLine());
-        int[] numbers = new int[n];
+        N = Integer.parseInt(br.readLine());
+        number = new int[N];
 
-        // 입력: 숫자 배열
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        for (int i = 0; i < n; i++) {
-            numbers[i] = Integer.parseInt(st.nextToken());
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+        for (int i = 0; i < N; i++) {
+            number[i] = Integer.parseInt(st.nextToken());
         }
 
-        // 입력: 연산자 개수
-        int[] operators = new int[4];
-        st = new StringTokenizer(br.readLine());
+        st = new StringTokenizer(br.readLine(), " ");
         for (int i = 0; i < 4; i++) {
-            operators[i] = Integer.parseInt(st.nextToken());
+            operator[i] = Integer.parseInt(st.nextToken());
         }
 
+        dfs(number[0], 1);
+
+        System.out.println(MAX);
+        System.out.println(MIN);
+    }
+
+    public static void dfs(int num, int idx) {
+        if (idx == N) {
+            MAX = Math.max(MAX, num);
+            MIN = Math.min(MIN, num);
+            return;
+        }
+
+        for (int i = 0; i < 4; i++) {
+            if (operator[i] > 0) {
+
+                operator[i]--;
+                switch (i) {
+                    case 0:
+                        dfs(num + number[idx], idx + 1);
+                        break;
+                    case 1:
+                        dfs(num - number[idx], idx + 1);
+                        break;
+                    case 2:
+                        dfs(num * number[idx], idx + 1);
+                        break;
+                    case 3:
+                        dfs(num / number[idx], idx + 1);
+                        break;
+                }
+                operator[i]++;
+            }
+        }
     }
 
 }
